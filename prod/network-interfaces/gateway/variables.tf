@@ -1,9 +1,5 @@
 # commons variables default
 
-variable "aws_subnet_id" {
-  default = "subnet-a71d16fc"
-}
-
 variable "tag_environment" {
   default = "PRD"
 }
@@ -22,16 +18,14 @@ variable "sg_description" {
 variable "tag_terraform" {
   default = "Yes"
 }
-variable "gw_priv_ips" {
-	type = "list"
-	default = ["10.84.38.193", "10.84.38.194","10.84.38.195","10.84.38.196"]
-}
-variable "ni_count" {
-  default = 4
-}
 variable "aws_region"{}
 
 # variables for Kaspersky
-variable "kscp_ni_name" {
-  default = "AMIE79.NI.KSCP.GW"
-}
+variable "kscp_puba_ni_name"{type = "list"}
+variable "kscp_pubb_ni_name"{type = "list"}
+variable "secur_groups"{}
+variable "aws_puba_subnet_id" {}
+variable "aws_pubb_subnet_id" {}
+variable "gwpuba_priv_ips"{type = "list"}
+variable "gwpubb_priv_ips"{type = "list"}
+

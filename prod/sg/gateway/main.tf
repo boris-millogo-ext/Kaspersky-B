@@ -60,6 +60,24 @@ resource "aws_security_group_rule" "sg_gateway_6" {
   cidr_blocks     = ["10.154.200.54/32"]
   description     = "WSUS"
 }
+resource "aws_security_group_rule" "sg_gateway_7" {
+  security_group_id = "${aws_security_group.sg_gateway.id}"
+  type            = "ingress"
+  from_port       = "15000"
+  to_port         = "15000"
+  protocol        = "udp"
+  source_security_group_id     = "${var.sg_admin_id}"
+  description     = "Connection to the Administration Server"
+}
+resource "aws_security_group_rule" "sg_gateway_8" {
+  security_group_id = "${aws_security_group.sg_gateway.id}"
+  type            = "ingress"
+  from_port       = "15001"
+  to_port         = "15001"
+  protocol        = "udp"
+  source_security_group_id     = "${var.sg_admin_id}"
+  description     = "connection with the Update Agent"
+}
 
 # egress for gateway
 

@@ -31,6 +31,33 @@ resource "aws_security_group_rule" "sg_database_3" {
   description     = "WSUS"
 }
 
+resource "aws_security_group_rule" "sg_database_4" {
+  security_group_id = "${aws_security_group.sg_database.id}"
+  type            = "ingress"
+  from_port       = "3306"
+  to_port         = "3306"
+  protocol        = "tcp"
+  source_security_group_id     = "${var.sg_admin_id}"
+  description     = "SQL DATABASE"
+}
+resource "aws_security_group_rule" "sg_database_5" {
+  security_group_id = "${aws_security_group.sg_database.id}"
+  type            = "ingress"
+  from_port       = "15000"
+  to_port         = "15000"
+  protocol        = "udp"
+  source_security_group_id     = "${var.sg_admin_id}"
+  description     = "Connection to the Administration Server"
+}
+resource "aws_security_group_rule" "sg_database_6" {
+  security_group_id = "${aws_security_group.sg_database.id}"
+  type            = "ingress"
+  from_port       = "15001"
+  to_port         = "15001"
+  protocol        = "udp"
+  source_security_group_id    = "${var.sg_admin_id}"
+  description     = "Connection to the Update Agent"
+}
 # egress for database
 
 resource "aws_security_group_rule" "sg_database_01" {
@@ -58,7 +85,6 @@ resource "aws_security_group" "sg_database" {
     Terraform =  "${var.tag_terraform}"
  }
 }
-
 
 ###########################
 #Output security groups ID#

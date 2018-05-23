@@ -1,7 +1,5 @@
 # commons variables default
 
-variable "aws_subnet_id" {}
-
 variable "tag_environment" {
   default = "PRD"
 }
@@ -21,9 +19,7 @@ variable "tag_terraform" {}
 variable "aws_region"{}
 
 # variables for kscp
-variable "kscp_ni_name" {
-  default = "AMIE79.NI.KSCP.ADM"
-}
-variable "priv_ip"{
-  default= "10.84.36.81"
-}
+variable "kscp_ni_name" {}
+variable "priv_ip"{type = "list"}
+variable "aws_subnet_id" {}
+variable "secur_groups"{}

@@ -17,16 +17,15 @@ variable "sg_description" {
 variable "aws_region" {
   description = "AWS Region selected"
 }
-
-variable "sg_vpc_id" {}
 variable "tag_terraform" {}
 
 
 ###########################
-#### Security   Groups ####
+#### Security   Groups and NI ####
 ###########################
-
-
-variable "admin_sg_name" {
-  default = "AMIE.SG.KSC.ADMIN"
+# variables for kscp
+variable "kscp_ni_name" {
+  default = "AMIE79.NI.KSCP.ADM"
 }
+variable "admin_sg_name" {}
+variable "sg_vpc_id" {}

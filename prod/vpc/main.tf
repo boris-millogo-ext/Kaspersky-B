@@ -67,12 +67,12 @@ resource "aws_subnet" "subnetb" {
 
 resource "aws_subnet" "subnetpuba" {
   vpc_id                  = "${aws_vpc.new_vpc.id}"
-  availability_zone       = "${var.availability_zones_b}"
+  availability_zone       = "${var.availability_zones_a}"
   map_public_ip_on_launch = true
   cidr_block              = "${var.zonepuba_cidr}"
 
   tags {
-    Name = "${var.new_vpc_name}-NET1b-PUB-${var.tag_environment}"
+    Name = "${var.new_vpc_name}-NET1a-PUB-${var.tag_environment}"
     Application = "${var.tag_application}"
     EOTP = "${var.tag_eotp}"
     Environment = "${var.tag_environment}"
@@ -208,8 +208,16 @@ value = "${aws_subnet.subneta.id}"
 
 output "subnetb" {
 value = "${aws_subnet.subnetb.id}"
-
+}
+output "subnet_puba" {
+value = "${aws_subnet.subnetpuba.id}"
+}
+output "subnet_pubb" {
+value = "${aws_subnet.subnetpubb.id}"
 }
 output "subnets_id" {
 value = ["${aws_subnet.subneta.id}, ${aws_subnet.subnetb.id}"]
+}
+output "subnets_pub_id" {
+value = ["${aws_subnet.subnetpuba.id}, ${aws_subnet.subnetpubb.id}"]
 }

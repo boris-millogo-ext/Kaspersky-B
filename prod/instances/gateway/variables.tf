@@ -1,9 +1,5 @@
 # commons variables default
 
-variable "instance_count" {
-  default = 4
-}
-
 variable "tag_environment" {
   default = "PRD"
   description = "Name of the environment"}
@@ -36,44 +32,26 @@ variable "root_volume_type" {
   default = "gp2"
   description = "Type of root volume default"}
 
-variable "aws_region" {
-  default = "us-east-2"
-  description = "AWS Region selected"}
-
-variable "availability_zones" {
-  default = "us-east-2a"
-  description = "List of availability zones"}
-
-variable "vpc_id" {
-  default = ""
-  description = "VPC ID"}
-
-variable "subnet_ids" {
-  default = ""
-  description = "List of Subnet IDS"}
-
 variable "aws_keyname" {
-  default = "vwt-ksc-gateway"
-  description = "Keypair for all instances for the project"}
+  description = "Keypair for all instances for the project"
+}
 
 # commons variables for kscp_gw_prod
 variable "kscp_gw_instance_type" {default = "t2.medium"}
-
 variable "kscp_gw_root_size" {default = "50"}
-
-variable "kscp_gw_tag_name" {
-  type = "list"
-  default = ["AMIE79A1KSCGWP1","AMIE79A1KSCGWP2","AMIE79A1KSCGWP3","AMIE79A1KSCGWP4"]
-
-variable "kscp_gw_tag_comments" {
-  type = "list"
-  default = ["Kaspersky Gateway1","Kaspersky Gateway2","Kaspersky Gateway3","Kaspersky Gateway4"]
-}
+variable "kscp_gw_puba_tag_name" {type = "list"}
+variable "kscp_gw_pubb_tag_name" {type = "list"}
+variable "kscp_gw_puba_tag_comments"  {type = "list"}
+variable "kscp_gw_pubb_tag_comments"  {type = "list"}
 variable "kscp_gw_ami" {
   /*type= "list"
   default = []*/
   default = ""
 }
+variable "inst_puba_count" {}
+variable "inst_pubb_count" {}
+variable "ni_gw_puba" {type="list"}
+variable "ni_gw_pubb" {type="list"}
 
 /*
 

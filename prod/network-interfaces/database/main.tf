@@ -3,8 +3,8 @@
 
 resource "aws_network_interface" "dbp1" {
   subnet_id       = "${var.aws_subnet_id}"
-  private_ips     = ["10.84.36.91"]
-  security_groups = ["${module.sg-database.aws_security_group_database_id}"]
+  private_ips     = ["${var.priv_ip}"]
+  security_groups = ["${var.secur_groups}"]
   tags {
     Name = "${var.kscp_ni_name}"
     Comments = "${var.sg_description}"
@@ -20,8 +20,4 @@ resource "aws_network_interface" "dbp1" {
 
 output "aws_network_interface_dbp1_id" {
   value = "${aws_network_interface.dbp1.id}"
-}
-
-output "database_database_sg" {
-  value = "${module.sg-database.aws_security_group_database_id}"
 }

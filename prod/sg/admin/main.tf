@@ -119,7 +119,6 @@ resource "aws_security_group" "sg_admin" {
  }
 }
 
-
 ###########################
 #Output security groups ID#
 ###########################
